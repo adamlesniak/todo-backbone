@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 
 	var todoItems = new TodoItems([
@@ -12,4 +10,3 @@ $(document).ready(function() {
 	$("body").append(todoItemsView.render().$el);
 
 });
-
