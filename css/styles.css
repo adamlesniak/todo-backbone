@@ -1,10 +1,57 @@
 
 body {
 	padding: 40px;
+	background: #F9F9F9;
 }
 
 body, p { font-size: 24px; }
 
+#newTodoItem {
+	padding: 10px;
+	display: inline-block;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+#todoItemsContainer {
+	max-width: 900px;
+    margin: 0 auto;
+}
+
+#todoItems {
+	list-style: none;
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	padding-left: 0px;
+	margin-top: 0px;
+}
+
+#todoItems > li {
+	padding: 10px;
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	cursor: pointer;
+}
+
 #todoItems li.completed {
 	text-decoration: line-through;
 }
+
+#todoItems li label {
+	width: 80%;
+	display: inline-block;
+}
+
+#todoItems > li > button#delete {
+	float: right;
+	display: block;
+	font-size: 14px;
+	background: #d9534f;
+	border-radius: 9px;
+	color: #FFF;
+	padding: 7px;
+	border: 0px;
+	width: 20%;
+}
+
+

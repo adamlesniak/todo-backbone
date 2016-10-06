@@ -1,11 +1,8 @@
 var TodoItemsView = Backbone.View.extend({
 
-	id: "todoItems",
-
-	tagName: "ul",
+	id: "todoItemsContainer",
 
 	events: {
-		"click #add" : "onClickAdd",
 		"keypress #newTodoItem" : "onKeyPress"
 	},
 	
@@ -18,39 +15,30 @@ var TodoItemsView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var self = this;
 
-		this.$el.append("<input type='text' autofocus id='newTodoItem'></input>");
-		this.$el.append("<button id='add'>Add</button>");
-
-		this.model.each(function(todoItem) {
-			var todoItemView = new TodoItemView({ model: todoItem });
-			self.$el.append(todoItemView.render().$el);
-		});
+		var template = $("#todoItemsTemplate").html();
+		var html = Mustache.render(template);
+		this.$el.html(html);
 
 		return this;
 	},
 
-	onClickAdd: function() {
-		var $textBox = this.$("#newTodoItem");
-
-		if($textBox.val()) {
-			var todoItem = new TodoItem({ title: $textBox.val() });
-			this.model.create(todoItem);
-
-			$textBox.val('');
-		}
-
-	},
-
 	onKeyPress: function(e) {
-		if (e.keyCode == 13)
-			this.onClickAdd();
+		if (e.keyCode == 13) {
+			var $textBox = this.$("#newTodoItem");
+
+			if($textBox.val()) {
+				var todoItem = new TodoItem({ title: $textBox.val() });
+				this.model.create(todoItem);
+
+				$textBox.val('');
+			}
+		}
 	},
 
 	onAddTodoItem: function(todoItem) {
 		var view = new TodoItemView({ model: todoItem });
-		this.$el.append(view.render().$el);
+		this.$("#todoItems").append(view.render().$el);
 	},
 
 	onRemoveTodoItem: function(todoItem) {
