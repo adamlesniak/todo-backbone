@@ -17,10 +17,18 @@
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/backbone-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+
         <script src="js/todoItem.js"></script>
         <script src="js/todoItemView.js"></script>
         <script src="js/todoItemsView.js"></script>
         <script src="js/todoItems.js"></script>
         <script src="js/main.js"></script>
+
+        <script type="text/html" id="todoItemTemplate">
+            <input id='toggle' type='checkbox' {{#completed}}checked{{/completed}}></input>
+            {{title}}
+            <button id='delete'>Delete</button>
+        </script>
     </body>
 </html>
