@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
-	var todoItems = new TodoItems([
-		new TodoItem({ description: "TodoItem 1" }),
-		new TodoItem({ description: "TodoItem 2" })
-	]);
+	var todoItems = new TodoItems();
+	todoItems.fetch();
 
 
 	var todoItemsView = new TodoItemsView({ model: todoItems });
